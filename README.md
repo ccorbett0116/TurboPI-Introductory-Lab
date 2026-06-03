@@ -60,6 +60,8 @@ On the robot's desktop, right-click and select **Open Terminal** (or click the t
 
 ### Step 3 — Edit the Wi-Fi Configuration File
 
+By default every robot broadcasts the same Wi-Fi hotspot name, which makes it impossible to tell them apart. Your task is to give your robot a unique name.
+
 The robot's Wi-Fi settings are stored in a plain Python file:
 
 ```
@@ -76,26 +78,36 @@ You will see:
 
 ```python
 WIFI_MODE = 1
+#WIFI_AP_SSID = 'HW-Robot'
+#WIFI_AP_PASSWORD = 'hiwonder'
 WIFI_STA_SSID = 'hiwonder_5G'
 WIFI_STA_PASSWORD = 'hiwonder'
 ```
 
 **What these mean:**
-- `WIFI_MODE = 1` — AP mode (the robot creates its own hotspot). Mode `2` is STA mode (the robot joins an existing network).
-- `WIFI_STA_SSID` — the name of the Wi-Fi network to join when in STA mode
-- `WIFI_STA_PASSWORD` — the password for that network
+- `WIFI_MODE = 1` — the robot is in **AP mode**: it creates its own Wi-Fi hotspot that other devices can connect to. This is the default mode and what we will keep.
+- `WIFI_AP_SSID` — the name of the hotspot the robot broadcasts (currently commented out, so it defaults to `HW-Robot`)
+- `WIFI_AP_PASSWORD` — the hotspot password
 
-**Your task:** Change `WIFI_STA_SSID` to the classroom network name provided by your instructor, and set `WIFI_STA_PASSWORD` to the correct password.
+**Your task:** Uncomment `WIFI_AP_SSID` and change it to something unique — for example, your name or student ID. You can also change the password if you like.
 
 ```python
-WIFI_MODE = 2
-WIFI_STA_SSID = 'YOUR_NETWORK_NAME'
-WIFI_STA_PASSWORD = 'YOUR_PASSWORD'
+WIFI_MODE = 1
+WIFI_AP_SSID = 'HW-YourName'
+WIFI_AP_PASSWORD = 'hiwonder'
 ```
+
+To uncomment a line in nano, delete the `#` at the start of the line.
 
 Save the file: press `Ctrl+X`, then `Y`, then `Enter`.
 
-> **Note:** Do not reboot the robot yet — wait for your instructor's signal so all robots switch networks at the same time.
+To apply the change, reboot the robot:
+
+```bash
+sudo reboot
+```
+
+After about 30 seconds, you should see your new hotspot name appear in your laptop's Wi-Fi list. Reconnect to it (using the password you set), then reconnect VNC and PuTTY at the same IP address as before.
 
 ---
 
