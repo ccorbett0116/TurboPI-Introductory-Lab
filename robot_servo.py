@@ -45,11 +45,11 @@ def main():
     time.sleep(1.0)
 
     print("Tilt up...")
-    set_servos(pan=1500, tilt=2000)
+    set_servos(pan=1500, tilt=1000)
     time.sleep(1.0)
 
     print("Tilt down...")
-    set_servos(pan=1500, tilt=1000)
+    set_servos(pan=1500, tilt=2000)
     time.sleep(1.0)
 
     print("Return to center.")

@@ -342,9 +342,9 @@ pscp pi@192.168.X.X:/tmp/snapshot.jpg C:\Users\YourName\Desktop\snapshot.jpg
 
 The camera is mounted on a pan/tilt head driven by two PWM servos. Servo positions are set by sending pulse widths in microseconds:
 
-- **~1000** — one extreme (far right / full down)
+- **~1000** — one extreme (far right / full up)
 - **~1500** — center
-- **~2000** — other extreme (far left / full up)
+- **~2000** — other extreme (far left / full down)
 
 The servo IDs on this robot are:
 - **Servo 2** — pan (left/right, horizontal)
@@ -390,8 +390,8 @@ def main():
     print("Center...")        ; set_servos(1500, 1500) ; time.sleep(1.0)
     print("Pan left...")      ; set_servos(pan=2000)   ; time.sleep(1.0)
     print("Pan right...")     ; set_servos(pan=1000)   ; time.sleep(1.0)
-    print("Tilt up...")       ; set_servos(pan=1500, tilt=2000) ; time.sleep(1.0)
-    print("Tilt down...")     ; set_servos(pan=1500, tilt=1000) ; time.sleep(1.0)
+    print("Tilt up...")       ; set_servos(pan=1500, tilt=1000) ; time.sleep(1.0)
+    print("Tilt down...")     ; set_servos(pan=1500, tilt=2000) ; time.sleep(1.0)
     print("Return to center."); set_servos(1500, 1500)
 
     node.destroy_node()
